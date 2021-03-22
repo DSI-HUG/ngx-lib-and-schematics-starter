@@ -16,7 +16,7 @@
     <a href="https://david-dm.org/DSI-HUG/ngx-lib-and-schematics-starter">
         <img src="https://img.shields.io/david/DSI-HUG/ngx-lib-and-schematics-starter.svg" alt="Dependency Status" />
     </a>
-    <a href="https://david-dm.org/DSI-HUG/ngx-lib-and-schematics-starter#info=devDependencies">
+    <a href="https://david-dm.org/DSI-HUG/ngx-lib-and-schematics-starter?type=dev">
         <img src="https://img.shields.io/david/dev/DSI-HUG/ngx-lib-and-schematics-starter.svg" alt="devDependency Status" />
     </a>
     <a href="http://makeapullrequest.com">

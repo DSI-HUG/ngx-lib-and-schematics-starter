@@ -31,7 +31,7 @@
     <a href="https://david-dm.org/GITHUB_REPO_NAME">
         <img src="https://img.shields.io/david/GITHUB_REPO_NAME.svg" alt="Dependency Status" />
     </a>
-    <a href="https://david-dm.org/GITHUB_REPO_NAME#info=devDependencies">
+    <a href="https://david-dm.org/GITHUB_REPO_NAME?type=dev">
         <img src="https://img.shields.io/david/dev/GITHUB_REPO_NAME.svg" alt="devDependency Status" />
     </a>
     <a href="http://makeapullrequest.com">
