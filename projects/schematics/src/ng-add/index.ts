@@ -4,17 +4,17 @@ import { JSONFile } from '@schematics/angular/utility/json-file';
 
 import { Schema } from '../schema/schema.model';
 
-function isAngularProject(tree: Tree): boolean {
+const isAngularProject = (tree: Tree): boolean => {
     const angularJson = new JSONFile(tree, 'angular.json');
     if (!angularJson) {
-        throw new SchematicsException(`Project is not an angular project.`);
+        throw new SchematicsException('Project is not an angular project.');
     }
     return true;
-}
+};
 
-export function ngAdd(options: Schema): Rule {
-    return (tree: Tree, context: SchematicContext) => {
-        context.logger.debug('ngAdd', options as any);
+export const ngAdd = (options: Schema): Rule =>
+    (tree: Tree, context: SchematicContext): Tree => {
+        context.logger.debug('ngAdd', options);
 
         if (isAngularProject(tree)) {
             context.addTask(new NodePackageInstallTask());
@@ -22,4 +22,3 @@ export function ngAdd(options: Schema): Rule {
 
         return tree;
     };
-}

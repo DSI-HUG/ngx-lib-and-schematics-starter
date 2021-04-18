@@ -9,8 +9,7 @@ describe('LibraryComponent', () => {
     beforeEach(async () => {
         await TestBed.configureTestingModule({
             declarations: [LibraryComponent]
-        })
-            .compileComponents();
+        }).compileComponents();
     });
 
     beforeEach(() => {

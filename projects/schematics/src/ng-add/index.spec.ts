@@ -1,9 +1,10 @@
+import { Tree } from '@angular-devkit/schematics';
 import { SchematicTestRunner, UnitTestTree } from '@angular-devkit/schematics/testing';
 import { Schema as ApplicationOptions, Style } from '@schematics/angular/application/schema';
 import { Schema as WorkspaceOptions } from '@schematics/angular/workspace/schema';
-import { Schema as SchematicOptions } from '../schema/schema.model';
-import { Tree } from '@angular-devkit/schematics';
 import { join } from 'path';
+
+import { Schema as SchematicOptions } from '../schema/schema.model';
 
 describe('Test - ngAdd schematic', () => {
     const collectionPath = join(__dirname, '../collection.json');
@@ -23,7 +24,7 @@ describe('Test - ngAdd schematic', () => {
         routing: false,
         style: Style.Scss,
         skipTests: false,
-        skipPackageJson: false,
+        skipPackageJson: false
     };
 
     const schematicOptions: SchematicOptions = {
