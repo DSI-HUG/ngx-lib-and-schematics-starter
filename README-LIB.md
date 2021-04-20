@@ -34,7 +34,7 @@
         <img src="https://img.shields.io/david/GITHUB_REPO_NAME.svg" alt="dependency status" />
     </a>
     <a href="https://david-dm.org/GITHUB_REPO_NAME?type=peer">
-        <img src="https://img.shields.io/david/dev/GITHUB_REPO_NAME.svg" alt="peerDependency status" />
+        <img src="https://img.shields.io/david/peer/GITHUB_REPO_NAME.svg" alt="peerDependency status" />
     </a>
     <a href="https://github.com/GITHUB_REPO_NAME/blob/master/CONTRIBUTING.md#-submitting-a-pull-request-pr">
         <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome" />

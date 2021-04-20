@@ -17,7 +17,7 @@
         <img src="https://img.shields.io/david/DSI-HUG/ngx-lib-and-schematics-starter.svg" alt="dependency status" />
     </a>
     <a href="https://david-dm.org/DSI-HUG/ngx-lib-and-schematics-starter?type=peer">
-        <img src="https://img.shields.io/david/DSI-HUG/ngx-lib-and-schematics-starter.svg" alt="peerDependency status" />
+        <img src="https://img.shields.io/david/peer/DSI-HUG/ngx-lib-and-schematics-starter.svg" alt="peerDependency status" />
     </a>
     <a href="https://david-dm.org/DSI-HUG/ngx-lib-and-schematics-starter?type=dev">
         <img src="https://img.shields.io/david/dev/DSI-HUG/ngx-lib-and-schematics-starter.svg" alt="devDependency status" />
