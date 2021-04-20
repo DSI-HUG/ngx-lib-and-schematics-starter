@@ -25,6 +25,9 @@
 </p>
 
 <p align="center">
+    <a href="https://github.com/DSI-HUG/ngx-lib-and-schematics-starter/actions?query=workflow:CI%20tests">
+        <img src="https://github.com/DSI-HUG/ngx-lib-and-schematics-starter/workflows/CI%20tests/badge.svg" alt="build status" />
+    </a>
     <a href="https://github.com/DSI-HUG/ngx-lib-and-schematics-starter/blob/master/CONTRIBUTING.md#-submitting-a-pull-request-pr">
         <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome" />
     </a>
