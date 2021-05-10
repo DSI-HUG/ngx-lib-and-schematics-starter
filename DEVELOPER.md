@@ -47,7 +47,7 @@ This includes:
 
 **Known issues**
 
-When using `npm`, any package installation made by your schematics will remove the symlink to the library.
+When using `npm`, any package installation made by your schematics will remove the symlink to the library ([#3](https://github.com/npm/rfcs/pull/3), [#2372](https://github.com/npm/cli/issues/2372)).
 
 To fix this issue, run the following command after each package installation:
 
