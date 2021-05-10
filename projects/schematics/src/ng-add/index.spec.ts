@@ -4,7 +4,7 @@ import { Schema as ApplicationOptions, Style } from '@schematics/angular/applica
 import { Schema as WorkspaceOptions } from '@schematics/angular/workspace/schema';
 import { join } from 'path';
 
-import { Schema as SchematicOptions } from '../schema/schema.model';
+import { NgAddOptions } from './ng-add-options';
 
 const workspaceOptions: WorkspaceOptions = {
     name: 'workspace',
@@ -22,8 +22,8 @@ const appOptions: ApplicationOptions = {
     skipPackageJson: false
 };
 
-const schematicOptions: SchematicOptions = {
-    arg1: ''
+const schematicOptions: NgAddOptions = {
+    option1: ''
 };
 
 const collectionPath = join(__dirname, '../collection.json');

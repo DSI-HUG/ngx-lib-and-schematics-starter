@@ -4,11 +4,11 @@
     "title": "ng-add schematic",
     "type": "object",
     "properties": {
-        "arg1": {
+        "option1": {
+            "x-prompt": "Please enter a value for option1 ?",
+            "description": "Option1 description",
             "type": "string",
-            "default": "",
-            "description": "Argument description",
-            "x-prompt": "Enter Please enter an arg1 ?"
+            "default": ""
         }
     },
     "required": [],

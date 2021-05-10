@@ -1,24 +1,11 @@
-import { Rule, SchematicContext, SchematicsException, Tree } from '@angular-devkit/schematics';
-import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
-import { JSONFile } from '@schematics/angular/utility/json-file';
+import { Rule } from '@angular-devkit/schematics';
 
-import { Schema } from '../schema/schema.model';
+import { addPackageJsonDependencies, packageInstallTask } from '../utility/package-json';
+import { schematic } from '../utility/rules';
+import { NgAddOptions } from './ng-add-options';
 
-const isAngularProject = (tree: Tree): boolean => {
-    const angularJson = new JSONFile(tree, 'angular.json');
-    if (!angularJson) {
-        throw new SchematicsException('Project is not an angular project.');
-    }
-    return true;
-};
-
-export const ngAdd = (options: Schema): Rule =>
-    (tree: Tree, context: SchematicContext): Tree => {
-        context.logger.debug('ngAdd', options);
-
-        if (isAngularProject(tree)) {
-            context.addTask(new NodePackageInstallTask());
-        }
-
-        return tree;
-    };
+export default (_options: NgAddOptions): Rule =>
+    schematic('ng-add', [
+        addPackageJsonDependencies(['LIBRARY_NAME']),
+        packageInstallTask()
+    ]);
