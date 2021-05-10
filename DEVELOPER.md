@@ -19,18 +19,24 @@ $ npm install
 
 ## Testing locally
 
-The library and schematics can be tested on an Angular project while being developed:
+The library and schematics can be tested on an Angular project while being developed.
 
-1. Run the following command to:
+The whole process is already automated for you so you can focus only on the development.
 
-   > 1. Ouput the library and schematics to the `./dist` folder
-   > 2. Create a dummy Angular project in `./tmp/test-lib`
-   > 3. Symlink the library with the dummy project
-   > 4. Watch for library and schematics changes
+This includes:
+
+* Ouputting the library and schematics to the `./dist` folder
+* Creating a dummy Angular project in `./tmp/test-lib`
+* Symlinking the library with the dummy project
+* Watching for library and schematics changes
+
+**Testing**
+
+1. Start testing
 
    ```sh
+   $ cd <library-path>
    $ npm start
-   ```
 
 2. Run and test the library and schematics against the Angular project
 
@@ -42,6 +48,7 @@ The library and schematics can be tested on an Angular project while being devel
 **Known issues**
 
 When using `npm`, any package installation made by your schematics will remove the symlink to the library.
+
 To fix this issue, run the following command after each package installation:
 
    ```sh
