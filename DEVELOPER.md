@@ -21,31 +21,32 @@ $ npm install
 
 The library and schematics can be tested on an Angular project while being developed:
 
-1. Ouput the library and schematics to dist and watch for changes
+1. Run the following command to:
+
+   > 1. Ouput the library and schematics to the `./dist` folder
+   > 2. Create a dummy Angular project in `./tmp/test-lib`
+   > 3. Symlink the library with the dummy project
+   > 4. Watch for library and schematics changes
 
    ```sh
-   $ npm run start:lib
-   $ npm run start:schematics
+   $ npm start
    ```
 
-2. Symlink the library to the global node_modules
+2. Run and test the library and schematics against the Angular project
 
    ```sh
-   $ cd ./dist/library
-   $ npm link
-   ```
-
-3. Create a dummy Angular project and link the library to it
-
-   ```sh
-   $ ng new test-lib ./test-lib
-   $ npm link LIBRARY_NAME
-   ```
-
-4. Run and test the library and schematics against the Angular project
-
-   ```sh
+   $ cd ./tmp/test-lib
    $ ng add LIBRARY_NAME
+   ```
+
+**Known issues**
+
+When using `npm`, any package installation made by your schematics will remove the symlink to the library.
+To fix this issue, run the following command after each package installation:
+
+   ```sh
+   $ cd ./tmp/test-lib
+   $ npm link LIBRARY_NAME
    ```
 
 **Tips** - ***you can use git to watch the effective changes made by the schematics:***
@@ -53,12 +54,14 @@ The library and schematics can be tested on an Angular project while being devel
 1. Make a clean state after creating the dummy Angular project
 
    ```sh
+   $ cd ./tmp/test-lib
    $ git commit -am 'clean state'
    ```
 
 2. Run the schematics and check the changes
 
    ```sh
+   $ ng add LIBRARY_NAME
    $ git status
    ```
 
@@ -87,9 +90,9 @@ $ npm run lint
 
 ## Building the library
 
-The library will be built in the `./dist/library` directory.
+> The library will be built in the `./dist` directory.
 
-Schematics will be embedded within the library under `./dist/library/schematics`.
+> Schematics will be embedded within the library under `./dist/schematics`.
 
 ```sh
 $ npm run build
@@ -99,7 +102,7 @@ $ npm run build
 
 This project comes with automatic continuous delivery (CD) using *GitHub Actions*.
 
-1. Bump the library version in `./projects/library/package.json`
+1. Bump the library version in `./package.json`
 2. Push the changes
 3. Create a new: [GitHub release](https://github.com/GITHUB_REPO_NAME/releases/new)
 4. Watch the results in: [Actions](https://github.com/GITHUB_REPO_NAME/actions)
