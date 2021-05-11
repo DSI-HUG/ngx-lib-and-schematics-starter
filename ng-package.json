@@ -5,7 +5,7 @@
         "entryFile": "./projects/library/src/public-api.ts"
     },
     "allowedNonPeerDependencies": [
-        "badisi/latest-version",
+        "@badisi/latest-version",
         "ts-morph"
     ]
 }
