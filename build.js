@@ -20,37 +20,33 @@ const SCHEMATICS_ASSETS = [
 
 let schematicsWatcher;
 
-const execCmd = (cmd, opts) => {
-    return new Promise((resolve, reject) => {
-        exec(cmd, opts, (err, stdout, stderr) => {
-            if (err) {
-                console.error(stdout, stderr);
-                return reject(err);
-            }
-            return resolve(stdout);
-        });
+const execCmd = (cmd, opts) => new Promise((resolve, reject) => {
+    exec(cmd, opts, (err, stdout, stderr) => {
+        if (err) {
+            console.error(stdout, stderr);
+            return reject(err);
+        }
+        return resolve(stdout);
     });
-};
+});
 
-const cleanDir = (path) => {
+const cleanDir = path => {
     if (existsSync(path)) {
         rmSync(path, { recursive: true });
     }
     mkdirSync(path, { recursive: true });
 };
 
-const copySchematicsAssets = () => {
-    return cpy(
-        SCHEMATICS_ASSETS,
-        `${process.cwd()}/${DIST_PATH}/schematics`,
-        {
-            cwd: `${process.cwd()}/projects/schematics/src`,
-            expandDirectories: true,
-            parents: true,
-            dot: true
-        }
-    );
-};
+const copySchematicsAssets = () => cpy(
+    SCHEMATICS_ASSETS,
+    `${process.cwd()}/${DIST_PATH}/schematics`,
+    {
+        cwd: `${process.cwd()}/projects/schematics/src`,
+        expandDirectories: true,
+        parents: true,
+        dot: true
+    }
+);
 
 const build = async () => {
     console.log('> Cleaning..');
@@ -70,21 +66,32 @@ const build = async () => {
 };
 
 /**
- * Avoid the following error during `ng new test-lib`:
- * "And invalid configuration file was found ['/angular.json']. Please delete the file before running the command."
+ * - Allow the creation of a new Angular project under /tmp/test-lib by avoiding the following error during `ng new test-lib`:
+ *      "And invalid configuration file was found ['/angular.json']. Please delete the file before running the command."
+ * - Allow the creation of a .git folder under /tmp/test-lib to track changes.
  */
-const patchAngularJsonForWatch = (patch) => {
-    if (patch && existsSync('angular.json')) {
-        renameSync('angular.json', 'angular-old.json');
-    } else if (!patch && existsSync('angular-old.json')) {
-        renameSync('angular-old.json', 'angular.json');
+const patchNgNew = patch => {
+    if (patch) {
+        if (existsSync('angular.json')) {
+            renameSync('angular.json', 'angular-old.json');
+        }
+        if (existsSync('.git')) {
+            renameSync('.git', '.git-old');
+        }
+    } else {
+        if (existsSync('angular-old.json')) {
+            renameSync('angular-old.json', 'angular.json');
+        }
+        if (existsSync('.git-old')) {
+            renameSync('.git-old', '.git');
+        }
     }
 };
 
 const linkLibrary = async () => {
     try {
         await execCmd('npm link', { cwd: './dist' });
-        await execCmd('npm link @hug/ngx-cdk', { cwd: './tmp/test-lib' });
+        await execCmd('npm link LIBRARY_NAME', { cwd: './tmp/test-lib' });
 
         console.log(green(`\n${'-'.repeat(78)}`));
         console.log(green('Linked library'));
@@ -98,7 +105,7 @@ const unwatchSchematics = async () => {
     if (schematicsWatcher) {
         await schematicsWatcher.close();
     }
-    patchAngularJsonForWatch(false);
+    patchNgNew(false);
 };
 
 const watchSchematics = () => {
@@ -133,17 +140,22 @@ const watch = async () => {
     cleanDir(TMP_PATH);
 
     console.log('\n> Creating dummy Angular project..');
-    patchAngularJsonForWatch(true);
+    patchNgNew(true);
     spawnSync('ng', [
-        'new', 'test-lib',
-        '--package-manager', 'npm',
-        '--directory', `${basename(__dirname)}/tmp/test-lib`,
-        '--style', 'scss',
-        '--strict', 'true',
+        'new',
+        'test-lib',
+        '--package-manager',
+        'npm',
+        '--directory',
+        `${basename(__dirname)}/tmp/test-lib`,
+        '--style',
+        'scss',
+        '--strict',
+        'true',
         '--routing',
         '--skip-install'
     ], { stdio: 'inherit', stderr: 'inherit', cwd: '..' });
-    patchAngularJsonForWatch(false);
+    patchNgNew(false);
 
     console.log('\n> Watching library..');
     spawn('ng', ['build', 'library', '--watch'], { stdio: 'inherit', stderr: 'inherit' });
@@ -178,7 +190,7 @@ const registerExitEvents = () => {
     process.on('SIGUSR1', cleanUp);
     process.on('SIGUSR2', cleanUp);
 
-    //catches uncaught exceptions
+    // catches uncaught exceptions
     process.on('uncaughtException', cleanUp);
 };
 
