@@ -54,7 +54,7 @@ const build = async () => {
     cleanDir(DIST_PATH);
 
     console.log('> Building library..');
-    await execCmd('ng build library --prod');
+    await execCmd('ng build library --configuration=production');
 
     console.log('> Building schematics..');
     await execCmd('tsc -p ./projects/schematics/tsconfig.json');
