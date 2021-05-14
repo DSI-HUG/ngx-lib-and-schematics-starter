@@ -158,17 +158,17 @@ const watch = async () => {
 
     // Wait for ng to rebuild dist folder
     const watcher = chokidarWatch('./dist/package.json');
-    watcher.on('add', async () => {
-        console.log('\n> Linking library.. (may take some time)');
-        await linkLibrary();
+    watcher.on('add', () => {
+        setTimeout(async () => {
+            console.log('\n> Linking library.. (may take some time)');
+            await linkLibrary();
 
-        console.log('\n> Watching schematics..');
-        watchSchematics();
+            console.log('\n> Watching schematics..');
+            watchSchematics();
 
-        watcher.close();
+            watcher.close();
+        });
     });
-
-    console.log('\n');
 };
 
 const cleanUp = async () => {
