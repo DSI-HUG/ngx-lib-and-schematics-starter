@@ -148,8 +148,7 @@ const watch = async () => {
         '--directory', `${basename(__dirname)}/tmp/test-lib`,
         '--style', 'scss',
         '--strict', 'true',
-        '--routing',
-        '--skip-install'
+        '--routing'
     ], { stdio: 'inherit', stderr: 'inherit', cwd: '..' });
     patchNgNew(false);
 
@@ -160,7 +159,7 @@ const watch = async () => {
     const watcher = chokidarWatch('./dist/package.json');
     watcher.on('add', () => {
         setTimeout(async () => {
-            console.log('\n> Linking library.. (may take some time)');
+            console.log('\n> Linking library..');
             await linkLibrary();
 
             console.log('\n> Watching schematics..');
