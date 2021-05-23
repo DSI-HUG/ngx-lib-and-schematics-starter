@@ -3,14 +3,5 @@
     "$id": "ng-add",
     "title": "ng-add schematic",
     "type": "object",
-    "properties": {
-        "option1": {
-            "x-prompt": "Please enter a value for option1 ?",
-            "description": "Option1 description",
-            "type": "string",
-            "default": ""
-        }
-    },
-    "required": [],
     "additionalProperties": false
 }

@@ -4,7 +4,7 @@ import { Schema as ApplicationOptions, Style } from '@schematics/angular/applica
 import { Schema as WorkspaceOptions } from '@schematics/angular/workspace/schema';
 import { join } from 'path';
 
-import { NgAddOptions } from './ng-add-options';
+import { InstallOptions } from './install-options';
 
 const workspaceOptions: WorkspaceOptions = {
     name: 'workspace',
@@ -22,13 +22,13 @@ const appOptions: ApplicationOptions = {
     skipPackageJson: false
 };
 
-const schematicOptions: NgAddOptions = {
-    option1: ''
+const schematicOptions: InstallOptions = {
+    option1: 'option1'
 };
 
 const collectionPath = join(__dirname, '../collection.json');
 
-const runner = new SchematicTestRunner('ngAdd schematic', collectionPath);
+const runner = new SchematicTestRunner('install schematic', collectionPath);
 
 const getCleanAppTree = async (): Promise<UnitTestTree> => {
     const workspaceTree = await runner
@@ -39,12 +39,12 @@ const getCleanAppTree = async (): Promise<UnitTestTree> => {
         .toPromise();
 };
 
-describe('Test - ngAdd schematic', () => {
+describe('Test - install schematic', () => {
     /**
      * Angular project should be required
      */
     it('should failed without an angular app', async () => {
-        const tree$ = runner.runSchematicAsync('ng-add', schematicOptions, Tree.empty()).toPromise();
+        const tree$ = runner.runSchematicAsync('install', schematicOptions, Tree.empty()).toPromise();
         await expectAsync(tree$).toBeRejected();
     });
 
@@ -58,7 +58,7 @@ describe('Test - ngAdd schematic', () => {
         beforeAll(async () => {
             tree = await getCleanAppTree();
             nbFiles = tree.files.length;
-            tree = await runner.runSchematicAsync('ng-add', schematicOptions, tree).toPromise();
+            tree = await runner.runSchematicAsync('install', schematicOptions, tree).toPromise();
         });
 
         it('should not create any new files', () => {

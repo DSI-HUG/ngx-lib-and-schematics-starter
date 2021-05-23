@@ -1,11 +1,7 @@
-import { Rule } from '@angular-devkit/schematics';
+import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
+import { RunSchematicTask } from '@angular-devkit/schematics/tasks';
 
-import { addPackageJsonDependencies, packageInstallTask } from '../utility/package-json';
-import { schematic } from '../utility/rules';
-import { NgAddOptions } from './ng-add-options';
-
-export default (_options: NgAddOptions): Rule =>
-    schematic('ng-add', [
-        addPackageJsonDependencies(['LIBRARY_NAME']),
-        packageInstallTask()
-    ]);
+export default (): Rule =>
+    (_tree: Tree, context: SchematicContext): void => {
+        context.addTask(new RunSchematicTask('install', {}));
+    };
