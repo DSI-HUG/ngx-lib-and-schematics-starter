@@ -1,7 +1,6 @@
-import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
-import { RunSchematicTask } from '@angular-devkit/schematics/tasks';
+import { SchematicContext, Tree, Rule } from '@angular-devkit/schematics';
 
 export default (): Rule =>
-    (_tree: Tree, context: SchematicContext): void => {
-        context.addTask(new RunSchematicTask('install', {}));
+    (_tree: Tree, _context: SchematicContext): void => {
+        //
     };
