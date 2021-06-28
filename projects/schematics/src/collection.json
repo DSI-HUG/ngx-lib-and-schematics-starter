@@ -5,6 +5,11 @@
             "description": "Run ng-add schematic",
             "factory": "./ng-add/index",
             "schema": "./ng-add/schema.json"
+        },
+        "starter": {
+            "description": "Run starter schematic",
+            "factory": "./starter/index",
+            "schema": "./starter/schema.json"
         }
     }
 }
