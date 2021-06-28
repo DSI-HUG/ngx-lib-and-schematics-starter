@@ -5,7 +5,6 @@
         "entryFile": "./projects/library/src/public-api.ts"
     },
     "allowedNonPeerDependencies": [
-        "@badisi/latest-version",
-        "semver"
+        "@badisi/latest-version"
     ]
 }
