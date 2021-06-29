@@ -1,7 +1,7 @@
 {
     "$schema": "http://json-schema.org/schema",
-    "$id": "ng-add",
-    "title": "ng-add schematic",
+    "$id": "starter",
+    "title": "starter schematic",
     "type": "object",
     "properties": {
         "option1": {
