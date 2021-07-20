@@ -57,7 +57,7 @@ The `ng add` command will install the library and ask the following questions to
 1. lorem ipsum
 2. lorem ipsum
 
-The ng add command will additionally perform the following configurations:
+The `ng add` command will additionally perform the following configurations:
 
 * lorem ipsum
 * lorem ipsum
