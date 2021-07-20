@@ -52,7 +52,7 @@ $ ng add LIBRARY_NAME
 ```
 
 <!-- edit:
-The ng add command will install the library and ask the following questions to determine which features to include:
+The `ng add` command will install the library and ask the following questions to determine which features to include:
 
 1. lorem ipsum
 2. lorem ipsum
