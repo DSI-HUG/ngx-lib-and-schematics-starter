@@ -1,4 +1,3 @@
-export * from './components/demo/demo.component';
-export * from './components/demo/demo.module';
-export * from './services/demo.service';
+export * from './components/demo/';
+export * from './services/';
 export * from './library.module';
