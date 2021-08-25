@@ -75,7 +75,7 @@ const logHeader = str => {
 };
 
 const build = async () => {
- ('> Cleaning..');
+    log('> Cleaning..');
     await cleanDir(DIST_PATH);
 
     log('> Deploying package.json..');
